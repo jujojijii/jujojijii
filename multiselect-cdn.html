@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>vue multiselect</title>
+  <link rel="stylesheet" href="https://unpkg.com/vue-multiselect@2.1.0/dist/vue-multiselect.min.css">
+<style>
+body {
+  background: #20262E;
+  padding: 20px;
+  font-family: Helvetica;
+}
+#app {
+  background: #fff;
+  border-radius: 4px;
+  padding: 40px;
+  transition: all 0.2s;
+}
+</style>
+</head>
+<body>
+
+<div id="app">
+  <multiselect
+      v-model="selected"
+      :options="options"
+      :searchable="true"
+      :multiple="true"
+      :close-on-select="true"
+      :clear-on-select="false"
+      :allow-empty="true"
+      placeholder="通常セレクタ">
+  </multiselect>
+</div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
+<script src="https://unpkg.com/vue-multiselect@2.1.0/dist/vue-multiselect.min.js"></script>
+<script>
+window.addEventListener('DOMContentLoaded', (event) => {
+
+  Vue.component('multiselect', window.VueMultiselect.default);
+
+  new Vue({
+    el: "#app",
+    data: {
+      selected: null,
+      options: ['list', 'of', 'options']
+    },
+  });
+});
+</script>
+</body>
+</html>
