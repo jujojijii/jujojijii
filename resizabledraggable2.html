@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>jQuery UI Resizable - Default functionality</title>
+<link rel="stylesheet" href="jquery-ui.css"/>
+<link rel="stylesheet" href="style.css"/>
+<style>
+.resizable,
+.draggable {
+  min-width: 200px;
+  width: 400px;
+  max-width: 800px;
+  min-height: 100px;
+  height: 300px;
+  max-height: 500px;
+  padding: 0.5em;
+}
+.absolute {
+  position: absolute;
+}
+h3 {text-align:center; margin: 0}
+</style>
+</head>
+<body>
+
+<!-- position:absolute を指定して、widget の起点を左上にしてみる -->
+
+<div id="resizableDraggable" class="ui-widget-content resizable draggable absolute">
+  <h3 class="ui-widget-header">リサどら1</h3>
+</div>
+<div id="resizableDraggable2" class="ui-widget-content resizable draggable absolute">
+  <h3 class="ui-widget-header">リサどら2</h3>
+</div>
+<div id="resizableDraggable3" class="ui-widget-content resizable draggable absolute">
+  <h3 class="ui-widget-header">リサどら3</h3>
+</div>
+
+<script src="jquery-3.7.0.js"></script>
+<script src="jquery-ui.js"></script>
+<script>
+$(function() {
+  $(".resizable").resizable({
+    start: function (event, ui) {
+      console.log('resizable start');
+      console.log(event);
+      console.log(ui); // originalElement
+    },
+    stop: function (event, ui) {
+      console.log('resizable stop');
+      console.log(event);
+      console.log(ui); // originalElement
+    },
+  });
+  $(".draggable").draggable({
+    start: function (event, ui) {
+      console.log('draggable start');
+      console.log(event);
+      console.log(ui); // originalElement
+    },
+    stop: function (event, ui) {
+      console.log('draggable stop');
+      console.log(event);
+      console.log(ui); // originalElement
+      $(event.target).appendTo('body');
+
+    },
+  });
+});
+</script>
+</body>
+</html>
